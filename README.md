@@ -22,6 +22,7 @@ Requisitos: JDK 17 e internet para baixar a versão oficial do Apktool.
 $apktool = Join-Path $env:TEMP "apktool_3.0.3.jar"
 $url = "https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar"
 Invoke-WebRequest -Uri $url -OutFile $apktool
+New-Item -ItemType Directory -Force .\dist | Out-Null
 java -jar $apktool b .\app -o .\dist\Radby-Sonds-Ultimate-unsigned.apk
 ```
 
