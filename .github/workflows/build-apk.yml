@@ -1,0 +1,57 @@
+name: Build unsigned APK
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Download and verify Apktool
+        shell: bash
+        run: |
+          set -euo pipefail
+          apktool_jar="$RUNNER_TEMP/apktool_3.0.3.jar"
+          curl --fail --location --silent --show-error \
+            "https://github.com/iBotPeaches/Apktool/releases/download/v3.0.3/apktool_3.0.3.jar" \
+            --output "$apktool_jar"
+          echo "dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423  $apktool_jar" \
+            | sha256sum --check
+
+      - name: Build APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          apktool_jar="$RUNNER_TEMP/apktool_3.0.3.jar"
+          apk_output="$GITHUB_WORKSPACE/dist/Radby-Sonds-Ultimate-unsigned.apk"
+          metadata_root="$RUNNER_TEMP/apk-metadata"
+          metadata_file="$metadata_root/META-INF/com/android/build/gradle/app-metadata.properties"
+          mkdir -p "$GITHUB_WORKSPACE/dist"
+          mkdir -p "$(dirname "$metadata_file")"
+          printf 'appMetadataVersion=1.1\nandroidGradlePluginVersion=8.7.3\n' > "$metadata_file"
+          java -jar "$apktool_jar" b "$GITHUB_WORKSPACE/app" -o "$apk_output"
+          jar uf "$apk_output" \
+            -C "$metadata_root" \
+            META-INF/com/android/build/gradle/app-metadata.properties
+          unzip -t "$apk_output"
+
+      - name: Upload unsigned APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: radby-sonds-ultimate-unsigned
+          path: dist/Radby-Sonds-Ultimate-unsigned.apk
+          if-no-files-found: error
+          retention-days: 30

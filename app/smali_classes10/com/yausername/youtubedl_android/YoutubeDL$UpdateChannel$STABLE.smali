@@ -1,0 +1,62 @@
+.class public final Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;
+.super Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel;
+.source "YoutubeDL.kt"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "STABLE"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\u000c\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0002\u0008\u00c6\u0002\u0018\u00002\u00020\u0001B\u0007\u0008\u0002\u00a2\u0006\u0002\u0010\u0002\u00a8\u0006\u0003"
+    }
+    d2 = {
+        "Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;",
+        "Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel;",
+        "()V",
+        "library_release"
+    }
+    k = 0x1
+    mv = {
+        0x1,
+        0x7,
+        0x1
+    }
+    xi = 0x30
+.end annotation
+
+
+# static fields
+.field public static final INSTANCE:Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;
+
+    invoke-direct {v0}, Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;-><init>()V
+
+    sput-object v0, Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;->INSTANCE:Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel$STABLE;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 1
+
+    .line 286
+    const-string v0, "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest"
+
+    invoke-direct {p0, v0}, Lcom/yausername/youtubedl_android/YoutubeDL$UpdateChannel;-><init>(Ljava/lang/String;)V
+
+    return-void
+.end method

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="?selectableItemBackgroundBorderless" android:layout_width="66.0dp" android:layout_height="wrap_content" android:paddingVertical="4.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/ring" android:padding="5.0dp" android:layout_width="50.0dp" android:layout_height="50.0dp">
+        <View android:id="@id/dot" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </FrameLayout>
+    <TextView android:textSize="12.0sp" android:id="@id/label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:maxLines="1" />
+</LinearLayout>

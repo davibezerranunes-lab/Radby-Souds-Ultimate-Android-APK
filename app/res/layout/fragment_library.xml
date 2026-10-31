@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.MaterialToolbar android:id="@id/selection_bar" android:visibility="gone" android:layout_width="match_parent" android:layout_height="48.0dp" app:navigationContentDescription="@string/cancel" app:navigationIcon="@drawable/ic_close" app:titleTextAppearance="@style/TextAppearance.Muzk.Section" />
+    <HorizontalScrollView android:id="@id/tabs" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="48.0dp">
+        <com.google.android.material.chip.ChipGroup android:id="@id/chips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="16.0dp" app:chipSpacingHorizontal="8.0dp" app:selectionRequired="true" app:singleLine="true" app:singleSelection="true">
+            <com.google.android.material.chip.Chip android:id="@id/chip_playlists" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lib_playlists" style="@style/Widget.Muzk.Chip" />
+            <com.google.android.material.chip.Chip android:id="@id/chip_tracks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lib_tracks" style="@style/Widget.Muzk.Chip" />
+            <com.google.android.material.chip.Chip android:id="@id/chip_folders" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lib_folders" style="@style/Widget.Muzk.Chip" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/list" android:paddingBottom="88.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/empty" android:padding="32.0dp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?textAppearanceBodyMedium" android:textColor="?colorOnSurfaceVariant" android:gravity="center" android:id="@id/empty_text" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <com.google.android.material.button.MaterialButton android:id="@id/empty_action" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" android:text="@string/grant_access" />
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton android:textStyle="bold" android:textColor="?colorOnPrimary" android:layout_gravity="end|bottom" android:id="@id/fab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16.0dp" android:text="@string/play_all" app:backgroundTint="?colorPrimary" app:icon="@drawable/ic_play" app:iconTint="?colorOnPrimary" app:shapeAppearanceOverlay="@style/ShapeAppearance.Muzk.Pill" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
